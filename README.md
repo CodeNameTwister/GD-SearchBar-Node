@@ -25,7 +25,7 @@ You must define the root where the filter will go
 Define what you want using "Search By"
 Search by has:
 * Single root node.
-* Mmulti root node.
+* Multi root node.
 * Group name for root nodes.
   
 ## Next step
