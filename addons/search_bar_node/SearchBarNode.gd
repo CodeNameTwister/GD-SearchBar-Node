@@ -16,12 +16,14 @@ enum SEARCH_BY {
 }
 
 @export_category("Search By")
+## Set type search for set the roots nodes.
 @export var search_by : SEARCH_BY = SEARCH_BY.SINGLE_ROOT_NODE:
 	set(e):
 		search_by = e
 		property_list_changed.emit()
 		update_configuration_warnings()
-
+			
+## Set a node as root for begin filter. (WARNING: Not use a node has contain this node!)
 @export var root_node_to_search : Node:
 	set(e):
 		if !Engine.is_editor_hint() and root_nodes_to_search:
@@ -43,7 +45,7 @@ enum SEARCH_BY {
 		else:
 			update_configuration_warnings()
 
-## Node where filter object (WARNING: Not use a node has contain this node!)
+## Set nodes where begin filter. (WARNING: Not use a node has contain this node!)
 @export var root_nodes_to_search : Array[Node] = []:
 	set(e):
 		root_nodes_to_search = e
@@ -65,6 +67,7 @@ enum SEARCH_BY {
 		else:
 			update_configuration_warnings()
 			
+## Set nodes as root if has any group name defined here. (WARNING: Not use a node has contain this node!)
 @export var group_name : PackedStringArray = []:
 	set(e):
 		group_name = e
