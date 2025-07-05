@@ -77,7 +77,10 @@ enum SEARCH_BY {
 ## Add any filter you want, can be property of script too!, default: ["text", "value"]
 @export var filters : Array[StringName] = [&"text", &"value"]
 
-## Discard other nodes if you have found an exact match and the others are only close but not equal!
+## Ignore if upper or lower, example if true: Hello" is equal to "hello" otherside if false: "Hello" is not equal to "hello"
+@export var equal_ignore_case : bool = true
+
+## Discard other nodes if you have found an exact match list and the others are only close but not equal!
 @export var discard_similars : bool = true
 
 var _last_search_buffer0 : Array[Node] = []
@@ -190,11 +193,16 @@ func _queue_update() -> void:
 					for y : Node in x.get_children():
 						if _is_valid_node(y):
 							y.visible = false
+
+	var extras : String = "m"
+	
+	if equal_ignore_case:
+		extras = "i" + extras
 							
 	var nodes_0 : Array[Node] = []
 	var nodes_1 : Array[Node] = []
-	var _rgx0 : RegEx = RegEx.create_from_string("(?i)^{0}$".format([value]))
-	var _rgx1 : RegEx = RegEx.create_from_string("(?i).*{0}.*".format([value]))
+	var _rgx0 : RegEx = RegEx.create_from_string("(?{0})^{1}$".format([extras, value]))
+	var _rgx1 : RegEx = RegEx.create_from_string("(?{0}).*{1}.*".format([extras, value]))
 	
 	if search_by == SEARCH_BY.SINGLE_ROOT_NODE:
 		for x : Node in root_node_to_search.get_children():
