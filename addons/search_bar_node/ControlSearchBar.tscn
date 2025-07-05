@@ -13,4 +13,3 @@ clear_button_enabled = true
 right_icon = ExtResource("1_ajy4p")
 script = ExtResource("2_2hgu8")
 group_name = PackedStringArray()
-equal_ignore_case = null
