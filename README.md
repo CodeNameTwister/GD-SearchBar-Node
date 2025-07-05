@@ -16,6 +16,32 @@ Addon for allow custom show elements in runtime using custom multi-filters.
 ### Preview
 ![preview](images/preview.gif)
 
+# How to use
+You only need a root node to search and the properties you want as criteria to filter.
+
+## First
+You must define the root where the filter will go
+
+Define what you want using "Search By"
+Search by has:
+* Searh by single root node.
+* Search by single multi root node.
+* Search by single group name for root nodes.
+  
+## Next step
+you must define the properties of the nodes for the filter.
+
+In the default configuration category, the filter has the “text” and “value” properties ideal for labels and select boxes, you can define your own properties or predefined properties; any property will work.
+
+>[!TIP]
+>You can define your custom properties from scripts.
+
+## Finish
+You can run and test the SearchBarNode, see the example scene if you need guidance.
+
+### Aditional
+You can display only the single full match if you set discard_similars to true, The other side also shows some close match.
+
 Copyrights (c) CodeNameTwister. See [LICENSE](LICENSE) for details.
 
 [godot engine]: https://godotengine.org/
