@@ -126,6 +126,9 @@ func _ready() -> void:
 	if !Engine.is_editor_hint():
 		text_changed.connect(_on_change)
 		text_submitted.connect(_on_change)
+	else:
+		if right_icon == null:
+			right_icon = ResourceLoader.load("res://addons/search_bar_node/search.svg")
 
 func _on_change(_event: String) -> void:
 	_queue_update()
