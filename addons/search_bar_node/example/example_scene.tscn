@@ -1,0 +1,182 @@
+[gd_scene load_steps=8 format=3 uid="uid://byynkoh3qoaum"]
+
+[ext_resource type="PackedScene" uid="uid://lkbigd17l4o7" path="res://addons/search_bar_node/ControlSearchBar.tscn" id="1_3ov4t"]
+[ext_resource type="Texture2D" uid="uid://brfrp6r0fiwl2" path="res://icon.svg" id="2_2g848"]
+[ext_resource type="Script" uid="uid://dnlrw50mewrwg" path="res://addons/search_bar_node/example/example_script.gd" id="3_2ma0v"]
+[ext_resource type="Texture2D" uid="uid://bw6pd8mb4o8dg" path="res://addons/search_bar_node/example/tip.png" id="4_dyyss"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ma0v"]
+bg_color = Color(0, 0.17976, 0.22039, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ma0v"]
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0sos"]
+bg_color = Color(0, 0.180392, 0.219608, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="Control" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExampleScene" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ma0v")
+
+[node name="MainContainer" type="MarginContainer" parent="ExampleScene"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RootBox" type="VBoxContainer" parent="ExampleScene/MainContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="ExampleScene/MainContainer/RootBox"]
+layout_mode = 2
+text = "Example Filter Search Bar"
+label_settings = SubResource("LabelSettings_2ma0v")
+horizontal_alignment = 1
+
+[node name="_separator_" type="HSeparator" parent="ExampleScene/MainContainer/RootBox"]
+layout_mode = 2
+
+[node name="SearchBarNode" parent="ExampleScene/MainContainer/RootBox" node_paths=PackedStringArray("root_node_to_search", "root_nodes_to_search") instance=ExtResource("1_3ov4t")]
+layout_mode = 2
+root_node_to_search = NodePath("../ObjectsToSearchContainer")
+root_nodes_to_search = [NodePath("../ObjectsToSearchContainer")]
+group_name = PackedStringArray("NODE_MUST_BE_SEARCH")
+
+[node name="_separator_2" type="HSeparator" parent="ExampleScene/MainContainer/RootBox"]
+layout_mode = 2
+
+[node name="ObjectsToSearchContainer" type="VBoxContainer" parent="ExampleScene/MainContainer/RootBox" groups=["NODE_MUST_BE_SEARCH"]]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FooLabelExample" type="Label" parent="ExampleScene/MainContainer/RootBox/ObjectsToSearchContainer"]
+layout_mode = 2
+text = "* Random label with value: 2005"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ExampleScene/MainContainer/RootBox/ObjectsToSearchContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_2g848")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="FooLabelExample" type="Label" parent="ExampleScene/MainContainer/RootBox/ObjectsToSearchContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "* Random Object Texture With Child Label"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="ExampleScene/MainContainer/RootBox/ObjectsToSearchContainer"]
+layout_mode = 2
+max_value = 10000.0
+value = 300.0
+alignment = 1
+prefix = "Spin Box Value:"
+
+[node name="FooLabelExample1" type="Label" parent="ExampleScene/MainContainer/RootBox/ObjectsToSearchContainer"]
+layout_mode = 2
+text = "* Hello Godot World"
+horizontal_alignment = 1
+
+[node name="FooLabelExample2" type="Label" parent="ExampleScene/MainContainer/RootBox/ObjectsToSearchContainer"]
+layout_mode = 2
+text = "* Ok Any Label Here You Can Filter"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ExampleScene/MainContainer/RootBox/ObjectsToSearchContainer"]
+layout_mode = 2
+
+[node name="Secret" type="Label" parent="ExampleScene/MainContainer/RootBox/ObjectsToSearchContainer"]
+layout_mode = 2
+text = ">>This Label Has Property Called SECRET<< (SECRET in Uppercase)"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_2ma0v")
+
+[node name="_separator_2" type="HSeparator" parent="ExampleScene/MainContainer/RootBox/ObjectsToSearchContainer"]
+layout_mode = 2
+
+[node name="FooLabelExample3" type="Label" parent="ExampleScene/MainContainer/RootBox/ObjectsToSearchContainer"]
+layout_mode = 2
+text = "* Foo Label"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b0sos")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Tuto" type="RichTextLabel" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TUTORIAL HOW TO USE
+----------------------------------------
+[How to setting on my Github]
+
+1. QUICK SAMPLE:
+Use the search bar for filter by you text or value (as default), only you need is write in that SearchBar.
+----------------------------------------
+2. HOW DO: CUSTOM FILTERS
+
+A label node has a script with keyword \"SECRET\" in upper case.
+
+The \"SECRET\" property value is \"MySweetGame\"
+
+[S T E P S]
+
+1. In \"SearchBarNode\" (You need to find that) modify the filters in the inspector.
+
+You must only add \"SECRET\" in (upper case because in the script is in upper case the property)
+
+2. Now you are ready for write MySweetGame and only show the label with the message \">>This Label Has Property... etc\"
+
+If you can see only that label, you complete the tutorial!.
+----------------------------------------
+
+That is!!... simple and quick, you like it? suppor this, I need to eat well with you help! ;D
+
+- Remember you can use any type node and any property for filter, include the node name."
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_dyyss")
+stretch_mode = 5

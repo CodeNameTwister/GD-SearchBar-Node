@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://lkbigd17l4o7"]
+
+[ext_resource type="Texture2D" uid="uid://bh83veus651m7" path="res://addons/search_bar_node/search.svg" id="1_ajy4p"]
+[ext_resource type="Script" uid="uid://y1hecem53675" path="res://addons/search_bar_node/SearchBarNode.gd" id="2_2hgu8"]
+
+[node name="SearchBarNode" type="LineEdit"]
+offset_right = 1152.0
+offset_bottom = 56.0
+size_flags_horizontal = 3
+placeholder_text = "Search Bar"
+alignment = 1
+clear_button_enabled = true
+right_icon = ExtResource("1_ajy4p")
+script = ExtResource("2_2hgu8")
+group_name = PackedStringArray()
